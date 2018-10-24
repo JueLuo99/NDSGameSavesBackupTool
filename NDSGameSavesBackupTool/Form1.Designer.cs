@@ -34,11 +34,14 @@
             this.buttonBackUpTo = new System.Windows.Forms.Button();
             this.listBoxAllSaves = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.groupBox_BackUpType = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.listBoxReadyToBackUp = new System.Windows.Forms.ListBox();
-            this.groupBox1.SuspendLayout();
+            this.groupBox_status = new System.Windows.Forms.GroupBox();
+            this.labelStatus = new System.Windows.Forms.Label();
+            this.groupBox_BackUpType.SuspendLayout();
+            this.groupBox_status.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxBackUpFrom
@@ -57,6 +60,7 @@
             this.textBoxBackUpTo.Name = "textBoxBackUpTo";
             this.textBoxBackUpTo.Size = new System.Drawing.Size(333, 21);
             this.textBoxBackUpTo.TabIndex = 1;
+            this.textBoxBackUpTo.Text = "./saves";
             // 
             // buttonBackUpFrom
             // 
@@ -82,44 +86,23 @@
             // 
             this.listBoxAllSaves.FormattingEnabled = true;
             this.listBoxAllSaves.ItemHeight = 12;
-            this.listBoxAllSaves.Items.AddRange(new object[] {
-            "1",
-            "1",
-            "2",
-            "3",
-            "35",
-            "5",
-            "4",
-            "5",
-            "5",
-            "7",
-            "8"});
             this.listBoxAllSaves.Location = new System.Drawing.Point(12, 82);
             this.listBoxAllSaves.Name = "listBoxAllSaves";
             this.listBoxAllSaves.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBoxAllSaves.Size = new System.Drawing.Size(166, 232);
             this.listBoxAllSaves.TabIndex = 4;
             // 
-            // groupBox1
+            // groupBox_BackUpType
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(458, 14);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(166, 77);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "备份方式";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 21);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(119, 16);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.Text = "直接备份至文件夹";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.groupBox_BackUpType.Controls.Add(this.radioButton2);
+            this.groupBox_BackUpType.Controls.Add(this.radioButton1);
+            this.groupBox_BackUpType.Enabled = false;
+            this.groupBox_BackUpType.Location = new System.Drawing.Point(458, 82);
+            this.groupBox_BackUpType.Name = "groupBox_BackUpType";
+            this.groupBox_BackUpType.Size = new System.Drawing.Size(166, 77);
+            this.groupBox_BackUpType.TabIndex = 5;
+            this.groupBox_BackUpType.TabStop = false;
+            this.groupBox_BackUpType.Text = "备份方式";
             // 
             // radioButton2
             // 
@@ -133,6 +116,16 @@
             this.radioButton2.Text = "创建备份日期的子文件夹";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(7, 21);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(119, 16);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.Text = "直接备份至文件夹";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
             // listBoxReadyToBackUp
             // 
             this.listBoxReadyToBackUp.FormattingEnabled = true;
@@ -142,13 +135,36 @@
             this.listBoxReadyToBackUp.Size = new System.Drawing.Size(166, 232);
             this.listBoxReadyToBackUp.TabIndex = 6;
             // 
+            // groupBox_status
+            // 
+            this.groupBox_status.Controls.Add(this.labelStatus);
+            this.groupBox_status.Location = new System.Drawing.Point(458, 12);
+            this.groupBox_status.Name = "groupBox_status";
+            this.groupBox_status.Size = new System.Drawing.Size(162, 52);
+            this.groupBox_status.TabIndex = 7;
+            this.groupBox_status.TabStop = false;
+            this.groupBox_status.Text = "当前状态";
+            // 
+            // labelStatus
+            // 
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Location = new System.Drawing.Point(53, 29);
+            this.labelStatus.Margin = new System.Windows.Forms.Padding(0);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(53, 12);
+            this.labelStatus.TabIndex = 0;
+            this.labelStatus.Text = "准备就绪";
+            this.labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelStatus.Resize += new System.EventHandler(this.labelStatus_Resize);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 404);
+            this.Controls.Add(this.groupBox_status);
             this.Controls.Add(this.listBoxReadyToBackUp);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox_BackUpType);
             this.Controls.Add(this.listBoxAllSaves);
             this.Controls.Add(this.buttonBackUpTo);
             this.Controls.Add(this.buttonBackUpFrom);
@@ -159,8 +175,11 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox_BackUpType.ResumeLayout(false);
+            this.groupBox_BackUpType.PerformLayout();
+            this.groupBox_status.ResumeLayout(false);
+            this.groupBox_status.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,10 +193,12 @@
         private System.Windows.Forms.Button buttonBackUpTo;
         private System.Windows.Forms.ListBox listBoxAllSaves;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox_BackUpType;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.ListBox listBoxReadyToBackUp;
+        private System.Windows.Forms.GroupBox groupBox_status;
+        private System.Windows.Forms.Label labelStatus;
     }
 }
 

@@ -58,6 +58,16 @@ namespace NDSGameSavesBackupTool
                 }
             }
         }
-           
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            labelStatus.Text = "请选择从何处备份";
+        }
+        
+        //使状态显示文本每次变更后都能居中显示
+        private void labelStatus_Resize(object sender, EventArgs e)
+        {
+            labelStatus.Location = new Point((groupBox_status.Width - labelStatus.Width) / 2, 24);
+        }
     }
 }
