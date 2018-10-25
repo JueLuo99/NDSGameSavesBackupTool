@@ -46,6 +46,7 @@
             this.buttonRemoveAll = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonStartBuckup = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox_BackUpType.SuspendLayout();
             this.groupBox_status.SuspendLayout();
@@ -222,13 +223,23 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "准备备份的存档列表：";
             // 
+            // buttonStartBuckup
+            // 
+            this.buttonStartBuckup.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonStartBuckup.Location = new System.Drawing.Point(457, 257);
+            this.buttonStartBuckup.Name = "buttonStartBuckup";
+            this.buttonStartBuckup.Size = new System.Drawing.Size(127, 75);
+            this.buttonStartBuckup.TabIndex = 14;
+            this.buttonStartBuckup.Text = "开始备份";
+            this.buttonStartBuckup.UseVisualStyleBackColor = true;
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(465, 257);
+            this.button1.Location = new System.Drawing.Point(590, 257);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 75);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "button1";
+            this.button1.Size = new System.Drawing.Size(34, 74);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "测试";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
@@ -237,6 +248,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 343);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonStartBuckup);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonRemoveAll);
@@ -286,6 +298,7 @@
         private System.Windows.Forms.Button buttonRemoveAll;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonStartBuckup;
         private System.Windows.Forms.Button button1;
     }
 }

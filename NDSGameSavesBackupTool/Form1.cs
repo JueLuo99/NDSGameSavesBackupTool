@@ -41,13 +41,16 @@ namespace NDSGameSavesBackupTool
 
         }
 
+        
         /// <summary>
         /// 查找指定目录下的存档文件，并添加至“saves”字典
         /// </summary>
         /// <param name="dirpath"></param>
         public void findSaves(string dirpath)
         {
+            
             string[] files = Directory.GetFiles(dirpath, "*.txt", SearchOption.AllDirectories);
+
             foreach (string file in files)
             {
                 try
@@ -56,11 +59,28 @@ namespace NDSGameSavesBackupTool
                 }
                 catch (ArgumentException)
                 {
-                    MessageBox.Show("检测到同名的存档文件，将只备份一个！");
+                    MessageBox.Show("检测到同名的存档文件，将只会备份一个！");
                     continue;
                 }
             }
         }
+
+        /// <summary>
+        /// 更改两个 listBox 上的数量提示
+        /// </summary>
+        public void ChangeSavesCount()
+        {
+            label1.Text = "找到的存档列表：(共" + listBoxAllSaves.Items.Count + "个)";
+            label2.Text = "准备备份的存档：(共" + listBoxReadyToBackUp.Items.Count + "个)";
+        }
+
+
+
+
+
+
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -81,6 +101,7 @@ namespace NDSGameSavesBackupTool
                 listBoxReadyToBackUp.Items.Add(listBoxAllSaves.SelectedItems[i]);
                 listBoxAllSaves.Items.Remove(listBoxAllSaves.SelectedItems[i]);
             }
+            ChangeSavesCount();
         }
 
         private void buttonAddAll_Click(object sender, EventArgs e)
@@ -90,6 +111,7 @@ namespace NDSGameSavesBackupTool
                 listBoxReadyToBackUp.Items.Add(i.ToString());
             }
             listBoxAllSaves.Items.Clear();
+            ChangeSavesCount();
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
@@ -100,6 +122,7 @@ namespace NDSGameSavesBackupTool
                 listBoxAllSaves.Items.Add(listBoxReadyToBackUp.SelectedItems[i]);
                 listBoxReadyToBackUp.Items.Remove(listBoxReadyToBackUp.SelectedItems[i]);
             }
+            ChangeSavesCount();
         }
 
         private void buttonRemoveAll_Click(object sender, EventArgs e)
@@ -109,6 +132,7 @@ namespace NDSGameSavesBackupTool
                 listBoxAllSaves.Items.Add(i.ToString());
             }
             listBoxReadyToBackUp.Items.Clear();
+            ChangeSavesCount();
         }
     }
 }
