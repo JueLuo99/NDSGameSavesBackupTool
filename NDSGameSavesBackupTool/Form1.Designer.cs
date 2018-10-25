@@ -40,6 +40,13 @@
             this.listBoxReadyToBackUp = new System.Windows.Forms.ListBox();
             this.groupBox_status = new System.Windows.Forms.GroupBox();
             this.labelStatus = new System.Windows.Forms.Label();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonAddAll = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonRemoveAll = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox_BackUpType.SuspendLayout();
             this.groupBox_status.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +67,7 @@
             this.textBoxBackUpTo.Name = "textBoxBackUpTo";
             this.textBoxBackUpTo.Size = new System.Drawing.Size(333, 21);
             this.textBoxBackUpTo.TabIndex = 1;
-            this.textBoxBackUpTo.Text = "./saves";
+            this.textBoxBackUpTo.Text = ".\\saves";
             // 
             // buttonBackUpFrom
             // 
@@ -86,7 +93,7 @@
             // 
             this.listBoxAllSaves.FormattingEnabled = true;
             this.listBoxAllSaves.ItemHeight = 12;
-            this.listBoxAllSaves.Location = new System.Drawing.Point(12, 82);
+            this.listBoxAllSaves.Location = new System.Drawing.Point(11, 100);
             this.listBoxAllSaves.Name = "listBoxAllSaves";
             this.listBoxAllSaves.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBoxAllSaves.Size = new System.Drawing.Size(166, 232);
@@ -130,7 +137,7 @@
             // 
             this.listBoxReadyToBackUp.FormattingEnabled = true;
             this.listBoxReadyToBackUp.ItemHeight = 12;
-            this.listBoxReadyToBackUp.Location = new System.Drawing.Point(286, 82);
+            this.listBoxReadyToBackUp.Location = new System.Drawing.Point(285, 100);
             this.listBoxReadyToBackUp.Name = "listBoxReadyToBackUp";
             this.listBoxReadyToBackUp.Size = new System.Drawing.Size(166, 232);
             this.listBoxReadyToBackUp.TabIndex = 6;
@@ -157,11 +164,85 @@
             this.labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelStatus.Resize += new System.EventHandler(this.labelStatus_Resize);
             // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(183, 151);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(95, 23);
+            this.buttonAdd.TabIndex = 8;
+            this.buttonAdd.Text = "添加选中项>>>";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonAddAll
+            // 
+            this.buttonAddAll.Location = new System.Drawing.Point(183, 181);
+            this.buttonAddAll.Name = "buttonAddAll";
+            this.buttonAddAll.Size = new System.Drawing.Size(95, 23);
+            this.buttonAddAll.TabIndex = 9;
+            this.buttonAddAll.Text = "添加全部项>>>";
+            this.buttonAddAll.UseVisualStyleBackColor = true;
+            this.buttonAddAll.Click += new System.EventHandler(this.buttonAddAll_Click);
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Location = new System.Drawing.Point(183, 211);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(95, 23);
+            this.buttonRemove.TabIndex = 10;
+            this.buttonRemove.Text = "<<<移除选中项";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            // 
+            // buttonRemoveAll
+            // 
+            this.buttonRemoveAll.Location = new System.Drawing.Point(183, 241);
+            this.buttonRemoveAll.Name = "buttonRemoveAll";
+            this.buttonRemoveAll.Size = new System.Drawing.Size(95, 23);
+            this.buttonRemoveAll.TabIndex = 11;
+            this.buttonRemoveAll.Text = "<<<移除全部项";
+            this.buttonRemoveAll.UseVisualStyleBackColor = true;
+            this.buttonRemoveAll.Click += new System.EventHandler(this.buttonRemoveAll_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 85);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 12);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "找到的存档列表：";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(283, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 12);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "准备备份的存档列表：";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(465, 257);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(159, 75);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 404);
+            this.ClientSize = new System.Drawing.Size(636, 343);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonRemoveAll);
+            this.Controls.Add(this.buttonRemove);
+            this.Controls.Add(this.buttonAddAll);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.groupBox_status);
             this.Controls.Add(this.listBoxReadyToBackUp);
             this.Controls.Add(this.groupBox_BackUpType);
@@ -199,6 +280,13 @@
         private System.Windows.Forms.ListBox listBoxReadyToBackUp;
         private System.Windows.Forms.GroupBox groupBox_status;
         private System.Windows.Forms.Label labelStatus;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonAddAll;
+        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttonRemoveAll;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

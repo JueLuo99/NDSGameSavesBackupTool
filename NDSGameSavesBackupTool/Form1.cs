@@ -24,8 +24,11 @@ namespace NDSGameSavesBackupTool
         private void button1_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) textBoxBackUpFrom.Text = folderBrowserDialog1.SelectedPath;
+            labelStatus.Text = "扫描中...请稍后...";
             findSaves(textBoxBackUpFrom.Text);
             foreach (string f in saves.Keys) listBoxAllSaves.Items.Add(f);
+            label1.Text = "找到的存档列表：（共" + saves.Count + "个）";
+            labelStatus.Text = "请选择需要备份的存档";
         }
 
         private void buttonBackUpTo_Click(object sender, EventArgs e)
@@ -68,6 +71,44 @@ namespace NDSGameSavesBackupTool
         private void labelStatus_Resize(object sender, EventArgs e)
         {
             labelStatus.Location = new Point((groupBox_status.Width - labelStatus.Width) / 2, 24);
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            //这里涉及到删除元素，逆向顺序删除，否则会导致下标变动
+            for (int i = listBoxAllSaves.SelectedItems.Count - 1; i > -1; i--)
+            {
+                listBoxReadyToBackUp.Items.Add(listBoxAllSaves.SelectedItems[i]);
+                listBoxAllSaves.Items.Remove(listBoxAllSaves.SelectedItems[i]);
+            }
+        }
+
+        private void buttonAddAll_Click(object sender, EventArgs e)
+        {
+            foreach (var i in listBoxAllSaves.Items)
+            {
+                listBoxReadyToBackUp.Items.Add(i.ToString());
+            }
+            listBoxAllSaves.Items.Clear();
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            //这里涉及到删除元素，逆向顺序删除，否则会导致下标变动
+            for (int i = listBoxReadyToBackUp.SelectedItems.Count - 1; i > -1; i--)
+            {
+                listBoxAllSaves.Items.Add(listBoxReadyToBackUp.SelectedItems[i]);
+                listBoxReadyToBackUp.Items.Remove(listBoxReadyToBackUp.SelectedItems[i]);
+            }
+        }
+
+        private void buttonRemoveAll_Click(object sender, EventArgs e)
+        {
+            foreach (var i in listBoxReadyToBackUp.Items)
+            {
+                listBoxAllSaves.Items.Add(i.ToString());
+            }
+            listBoxReadyToBackUp.Items.Clear();
         }
     }
 }
