@@ -74,6 +74,7 @@ namespace NDSGameSavesBackupTool
         {
             label1.Text = "找到的存档列表：(共" + listBoxAllSaves.Items.Count + "个)";
             label2.Text = "准备备份的存档：(共" + listBoxReadyToBackUp.Items.Count + "个)";
+            labelStatus.Text = "准备就绪";
         }
 
 
