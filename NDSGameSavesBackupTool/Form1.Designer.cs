@@ -257,7 +257,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "NDS游戏存档备份工具V1.0 by:绝洛 QQ：568750743";
+            this.Text = "NDS游戏存档备份工具V1.0 by:绝洛";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox_BackUpType.ResumeLayout(false);
             this.groupBox_BackUpType.PerformLayout();
