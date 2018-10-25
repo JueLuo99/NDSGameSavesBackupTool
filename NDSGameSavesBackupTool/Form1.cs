@@ -18,12 +18,14 @@ namespace NDSGameSavesBackupTool
             InitializeComponent();
         }
 
-        //K为文件名，V为绝对路径
+        //用于保存找到的存档的字典，K为文件名，V为绝对路径
         public Dictionary<string, string> saves = new Dictionary<string, string>();
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) textBoxBackUpFrom.Text = folderBrowserDialog1.SelectedPath;
+            //若用户未选择目录则直接跳出，防止异常
+            else return;
             labelStatus.Text = "扫描中...请稍后...";
             findSaves(textBoxBackUpFrom.Text);
             foreach (string f in saves.Keys) listBoxAllSaves.Items.Add(f);
@@ -49,7 +51,7 @@ namespace NDSGameSavesBackupTool
         public void findSaves(string dirpath)
         {
             
-            string[] files = Directory.GetFiles(dirpath, "*.txt", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(dirpath, "*.sav", SearchOption.AllDirectories);
 
             foreach (string file in files)
             {
@@ -133,6 +135,26 @@ namespace NDSGameSavesBackupTool
             }
             listBoxReadyToBackUp.Items.Clear();
             ChangeSavesCount();
+        }
+
+        private void buttonStartBuckup_Click(object sender, EventArgs e)
+        {
+            //没有选中游戏则不开始备份
+            if (listBoxReadyToBackUp.Items.Count == 0)
+            {
+                MessageBox.Show("没有选中任何存档，请选择至少一个存档后重试！");
+                return;
+            }
+            //备份的文件操作
+            foreach (string i in listBoxReadyToBackUp.Items)
+            {
+                //拷贝前先检查文件夹是否已存在
+                if (!Directory.Exists(textBoxBackUpTo.Text)) Directory.CreateDirectory(textBoxBackUpTo.Text);
+                //检查文件是否已经存在，并提醒将会覆盖
+                if(File.Exists(textBoxBackUpTo.Text + "\\" + i)) MessageBox.Show(i + "已经存在，将会覆盖！");
+                File.Copy(saves[i], textBoxBackUpTo.Text + "\\" + i, true);
+            }
+            labelStatus.Text = "备份完成！";
         }
     }
 }
