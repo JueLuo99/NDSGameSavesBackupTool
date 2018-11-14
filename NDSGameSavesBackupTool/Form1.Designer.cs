@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBoxBackUpFrom = new System.Windows.Forms.TextBox();
             this.textBoxBackUpTo = new System.Windows.Forms.TextBox();
             this.buttonBackUpFrom = new System.Windows.Forms.Button();
@@ -254,6 +255,7 @@
             this.Controls.Add(this.textBoxBackUpTo);
             this.Controls.Add(this.textBoxBackUpFrom);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
