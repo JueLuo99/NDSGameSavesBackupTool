@@ -107,7 +107,7 @@
             this.groupBox_BackUpType.Enabled = false;
             this.groupBox_BackUpType.Location = new System.Drawing.Point(458, 82);
             this.groupBox_BackUpType.Name = "groupBox_BackUpType";
-            this.groupBox_BackUpType.Size = new System.Drawing.Size(166, 77);
+            this.groupBox_BackUpType.Size = new System.Drawing.Size(166, 69);
             this.groupBox_BackUpType.TabIndex = 5;
             this.groupBox_BackUpType.TabStop = false;
             this.groupBox_BackUpType.Text = "备份方式";
